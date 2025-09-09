@@ -31,7 +31,7 @@ To get a local copy up and running follow these simple steps.
 
 1. Clone the repo:
    ```sh
-   git clone https://github.com/NishadAnwar/Hire4Job-Job-Portal/Hire4Job.git
+   git clone https://github.com/NishadAnwar/Hire4Job-Job-Portal.git
    ```
 2. Install NPM packages:
 
@@ -92,4 +92,4 @@ Contributions are what make the open-source community such an amazing place to l
 
 Md Nishad Anwar - [GitHub](https://github.com/NishadAnwar)
 
-Project Link: [https://github.com/NishadAnwar/Hire4Job.git](https://github.com/NishadAnwar/Hire4Job-Job-Portal/Hire4Job.git)
+Project Link: [https://github.com/NishadAnwar/Hire4Job.git](https://github.com/NishadAnwar/Hire4Job-Job-Portal.git)
