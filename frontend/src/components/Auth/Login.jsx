@@ -18,7 +18,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://hire4job-job-portal-backend.onrender.com/api/v1/user/login",
+        "${process.env.REACT_APP_BACKEND_URL}/api/v1/user/login",
         { email, password, role },
         {
           headers: {
