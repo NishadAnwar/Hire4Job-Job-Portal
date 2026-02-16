@@ -72,7 +72,7 @@ const Application = () => {
 
     try {
       const { data } = await axios.post(
-        "https://hire4job-job-portal-backend.onrender.com/api/v1/application/post",
+        "${process.env.REACT_APP_BACKEND_URL}/api/v1/application/post",
         formData,
         {
           withCredentials: true,
