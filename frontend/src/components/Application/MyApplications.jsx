@@ -18,7 +18,7 @@ const MyApplications = () => {
     try {
       if (user && user.role === "Employer") {
         axios
-          .get("https://hire4job-job-portal-backend.onrender.com/api/v1/application/employer/getall", {
+          .get("${process.env.REACT_APP_BACKEND_URL}/api/v1/application/employer/getall", {
             withCredentials: true,
           })
           .then((res) => {
@@ -26,7 +26,7 @@ const MyApplications = () => {
           });
       } else {
         axios
-          .get("https://hire4job-job-portal-backend.onrender.com/api/v1/application/jobseeker/getall", {
+          .get("${process.env.REACT_APP_BACKEND_URL}/api/v1/application/jobseeker/getall", {
             withCredentials: true,
           })
           .then((res) => {
@@ -45,7 +45,7 @@ const MyApplications = () => {
   const deleteApplication = (id) => {
     try {
       axios
-        .delete(`https://hire4job-job-portal-backend.onrender.com/api/v1/application/delete/${id}`, {
+        .delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/application/delete/${id}`, {
           withCredentials: true,
         })
         .then((res) => {
