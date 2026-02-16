@@ -24,6 +24,14 @@ export const register = catchAsyncErrors(async (req, res, next) => {
 
 export const login = catchAsyncErrors(async (req, res, next) => {
   const { email, password, role } = req.body;
+  //
+  res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+});
+  //
+
   if (!email || !password || !role) {
     return next(new ErrorHandler("Please provide email ,password and role !"));
   }
@@ -35,6 +43,7 @@ export const login = catchAsyncErrors(async (req, res, next) => {
   if (!isPasswordMatched) {
     return next(new ErrorHandler("Invalid Email Or Password !", 400));
   }
+
   if (user.role !== role) {
     return next(
       new ErrorHandler(`User with provided email and ${role} not found !`, 404)
