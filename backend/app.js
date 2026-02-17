@@ -15,7 +15,7 @@ config();
 
 app.use(
   cors({
-    origin: "https://hire4job-job-portal.vercel.app",
+    origin: process.env.FRONTEND_URL,
     method: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
