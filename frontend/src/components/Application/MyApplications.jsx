@@ -18,7 +18,7 @@ const MyApplications = () => {
     try {
       if (user && user.role === "Employer") {
         axios
-          .get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/application/employer/getall`, {
+          .get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/application/employer/getall`, {
             withCredentials: true,
           })
           .then((res) => {
