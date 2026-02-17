@@ -26,7 +26,7 @@ const MyApplications = () => {
           });
       } else {
         axios
-          .get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/application/jobseeker/getall`, {
+          .get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/application/jobseeker/getall`, {
             withCredentials: true,
           })
           .then((res) => {
@@ -45,7 +45,7 @@ const MyApplications = () => {
   const deleteApplication = (id) => {
     try {
       axios
-        .delete(`${process.env.REACT_APP_BACKEND_URL}/api/v1/application/delete/${id}`, {
+        .delete(`${import.meta.env.VITE_BACKEND_URL}/api/v1/application/delete/${id}`, {
           withCredentials: true,
         })
         .then((res) => {
