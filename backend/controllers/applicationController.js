@@ -3,6 +3,7 @@ import ErrorHandler from "../middlewares/error.js";
 import { Application } from "../models/applicationSchema.js";
 import { Job } from "../models/jobSchema.js";
 import cloudinary from "cloudinary";
+import fs from "fs";
 
 export const postApplication = catchAsyncErrors(async (req, res, next) => {
   const { role } = req.user;
@@ -17,7 +18,13 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
   }
 
   const { resume } = req.files;
-  const allowedFormats = ["image/png", "image/jpeg", "image/webp"];
+  const allowedFormats = [
+  "image/png",
+  "image/jpeg",
+  "image/webp",
+  "application/pdf",
+];
+
   if (!allowedFormats.includes(resume.mimetype)) {
     return next(
       new ErrorHandler("Invalid file type. Please upload a PNG, JPEG, or WEBP file.", 400)
@@ -25,9 +32,15 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
   }
   
   try {
-    const cloudinaryResponse = await cloudinary.uploader.upload(
-      resume.tempFilePath
+    const cloudinaryResponse = await cloudinary.v2.uploader.upload(
+      resume.tempFilePath,
+      {
+        folder: "Job_Portal_Resumes",
+        resource_type: "auto",
+      }
     );
+
+    fs.unlinkSync(resume.tempFilePath);
 
     if (!cloudinaryResponse || cloudinaryResponse.error) {
       console.error(
@@ -63,8 +76,8 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
       !coverLetter ||
       !phone ||
       !address ||
-      !applicantID ||
-      !employerID ||
+      // !applicantID ||
+      // !employerID ||
       !resume
     ) {
       return next(new ErrorHandler("Please fill all fields.", 400));
