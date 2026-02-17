@@ -12,7 +12,7 @@ const JobDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/job/${id}`, {
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/job/${id}`, {
         withCredentials: true,
       })
       .then((res) => {
